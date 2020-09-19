@@ -15,44 +15,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7v-n5-ccP">
-                                <rect key="frame" x="164" y="726" width="87" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7v-n5-ccP">
+                                <rect key="frame" x="157" y="769" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="5Vt-9w-uis"/>
+                                    <constraint firstAttribute="height" constant="50" id="ewd-HN-ErU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="chal_num1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="msi-fr-fcz"/>
-                                    <action selector="showAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8mN-5C-r4U"/>
+                                    <action selector="showAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fa2-2a-ZbO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="₩100,000,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlU-gF-QMs">
-                                <rect key="frame" x="105" y="627" width="205" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-s2-8km">
-                                <rect key="frame" x="20" y="197" width="374" height="384"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZ4-uW-jru">
-                                <rect key="frame" x="156" y="92" width="102" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyPics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZ4-uW-jru">
+                                <rect key="frame" x="156" y="84" width="102" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩100,000,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlU-gF-QMs">
+                                <rect key="frame" x="98" y="645" width="218" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-s2-8km">
+                                <rect key="frame" x="47" y="222" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Wta-B3-ilF"/>
+                                    <constraint firstAttribute="width" constant="320" id="zFB-HP-bGB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KZ4-uW-jru" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="3TA-po-gSk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="D7v-n5-ccP" secondAttribute="bottom" constant="43" id="Dt6-WJ-Oqr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KZ4-uW-jru" secondAttribute="trailing" constant="156" id="GMp-Yu-8FK"/>
+                            <constraint firstItem="eE7-s2-8km" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="178" id="JJG-Wn-hkl"/>
+                            <constraint firstItem="KZ4-uW-jru" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="156" id="ZKu-Gj-TXR"/>
+                            <constraint firstItem="LlU-gF-QMs" firstAttribute="centerX" secondItem="D7v-n5-ccP" secondAttribute="centerX" id="cAj-Uo-9Pg"/>
+                            <constraint firstItem="D7v-n5-ccP" firstAttribute="top" secondItem="LlU-gF-QMs" secondAttribute="bottom" constant="88" id="jRw-8S-XFD"/>
+                            <constraint firstItem="eE7-s2-8km" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mAu-sc-siC"/>
+                            <constraint firstItem="D7v-n5-ccP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wIT-4Y-heo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="priceLabel" destination="LlU-gF-QMs" id="Gvc-1J-ghl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114.49275362318842" y="-986.38392857142856"/>
+            <point key="canvasLocation" x="-1407" y="-1827"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dog" width="1372" height="2024.5"/>
+    </resources>
 </document>
