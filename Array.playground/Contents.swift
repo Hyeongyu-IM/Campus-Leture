@@ -40,7 +40,7 @@ evenNumbers
 
 evenNumbers[0] = -2
 
-evenNumbers[0...2] = [-2, 0, 2]  //이렇게 값을 바꿔줄수 있다
+evenNumbers[0...2] = [-2, 0, 2]  //이렇게 값을 바꿔줄수 있다 
 
 //evenNumbers.swapAt(0, 9)  // 데이터의 위치를 서로 바꾼다
 
