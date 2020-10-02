@@ -9,8 +9,36 @@ import UIKit
 
 class BountyViewControlerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-    let bountyList = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
+    //MVVM
+    
+    //Model
+    // - BountyInfo
+    // > BountyInfo 만들자
+    
+    //View
+    // - ListCell
+    // > ListCell 필요한 정보를 ViewModel한테서 받아야 겠다.
+    // > ListCell은 ViewModel로 부터 받은 정보로 뷰 업데이트 하기
+    
+    //ViewModel
+    // - BountyViewModel
+    // > BountyViewModel을 만들고, 뷰레이어에서 필요한 메서드 만들기
+    // > 모델 가지고 있기 ,, BountyInfo 들
+    
+//    let bountyInfoList: [BountyInfo] = [
+//        BountyInfo(name: "brook", bounty: 33000000),
+//        BountyInfo(name: "chopper", bounty: 50),
+//        BountyInfo(name: "franky", bounty: 44000000),
+//        BountyInfo(name: "luffy", bounty: 300000000),
+//        BountyInfo(name: "nami", bounty: 16000000),
+//        BountyInfo(name: "robin", bounty: 80000000),
+//        BountyInfo(name: "sanji", bounty: 77000000),
+//        BountyInfo(name: "zoro", bounty: 120000000)
+//    ]
+    
+    //뷰모델 생성
+    // 위모델을 없앴을때 빨간색 에러가 뜨는 것들을 수정해 주어야 한다.
+    let viewModel = BountyViewModel()
     
     // 아래에는 클릭되었을때의 segue를 실행할때 데이터를 넘겨주자! 를 작성
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,8 +50,9 @@ class BountyViewControlerViewController: UIViewController, UITableViewDataSource
             
             // 센더로 데이터 넘버를 받는다.
             if let index = sender as? Int{
-            ve?.name = nameList[index]
-            ve?.bounty = bountyList[index]
+//                let bountyInfo = bountyInfoList[index]
+                let bountyInfo = viewModel.bountyInfo(at: index)
+                ve?.viewModel.update(model: bountyInfo)
             }
         }
     }
@@ -37,8 +66,9 @@ class BountyViewControlerViewController: UIViewController, UITableViewDataSource
     //UITableViewDataSource
     // cell의 개수가 몇개야?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bountyList.count
-        
+//        return bountyList.count
+//        return bountyInfoList.count
+        return viewModel.numOfBountyInfoList
         
         // 응 2개야
 //        return 2
@@ -53,11 +83,17 @@ class BountyViewControlerViewController: UIViewController, UITableViewDataSource
             return UITableViewCell()
         }
         // 이렇게 설정된 cell을 반환해줘. 라고 하는것
-        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-        cell.imgView.image = img
-        cell.nameLabel.text = nameList[indexPath.row] // 얘는 원래 문자열이라서 "" 안해줘도 ㅇㅋ
-        cell.bountyLabel.text = "\(bountyList[indexPath.row])"  //읽는 타입이 숫자라서 문자열로 "" 표시해준다
+//        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
+//        cell.imgView.image = img
+//        cell.nameLabel.text = nameList[indexPath.row] // 얘는 원래 문자열이라서 "" 안해줘도 ㅇㅋ
+//        cell.bountyLabel.text = "\(bountyList[indexPath.row])"  //읽는 타입이 숫자라서 문자열로 "" 표시해준다
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
+        cell.update(info: bountyInfo)
         
+        
+        //        cell.imgView.image = bountyInfo.image
+//        cell.nameLabel.text = bountyInfo.name // 얘는 원래 문자열이라서 "" 안해줘도 ㅇㅋ
+//        cell.bountyLabel.text = "\(bountyInfo.bounty)"  //읽는 타입이 숫자라서 문자열로 "" 표시해준다
         return cell
     }
     
@@ -79,8 +115,59 @@ class BountyViewControlerViewController: UIViewController, UITableViewDataSource
 // 커스텀 셀을 만들때는 하나하나의 요소를 연결해주어야 하고
 // 클래스로 만들어 관리해 주어야 한다.
 class ListCell: UITableViewCell {
- @IBOutlet weak var imgView: UIImageView!
+    
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
     
+    func update( info: BountyInfo ) {
+        imgView.image = info.image
+        nameLabel.text = info.name // 얘는 원래 문자열이라서 "" 안해줘도 ㅇㅋ
+        bountyLabel.text = "\(info.bounty)"  //읽는 타입이 숫자라서 문자열로 "" 표시해준다
+    }
+    
+}
+
+struct BountyInfo {
+    let name: String
+    let bounty: Int
+    
+    var image: UIImage? {
+        return UIImage(named: "\(name).jpg")
+    }
+    
+    init(name: String, bounty: Int) {
+        self.name = name
+        self.bounty = bounty
+    }
+}
+
+//뷰모델은 모델데이터를 가지고 있어야한다.
+class BountyViewModel {
+    let bountyInfoList: [BountyInfo] = [
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
+    
+    // 정렬 안에 수식은 클로저
+    var sortedList: [BountyInfo] {
+        let sortedList = bountyInfoList.sorted { prev, next in
+            return prev.bounty > next.bounty
+        }
+        return sortedList
+    }
+    
+    var numOfBountyInfoList: Int {
+      return bountyInfoList.count
+    }
+    
+    func bountyInfo(at index: Int) -> BountyInfo {
+        return sortedList[index]
+    }
 }
