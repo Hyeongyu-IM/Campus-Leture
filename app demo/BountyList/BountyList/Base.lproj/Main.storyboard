@@ -50,11 +50,11 @@
                                                 <constraint firstItem="0ND-qs-PdO" firstAttribute="leading" secondItem="Cmx-Ox-hif" secondAttribute="leading" constant="20" symbolic="YES" id="1js-3S-4uk"/>
                                                 <constraint firstItem="bQS-GN-wp6" firstAttribute="centerY" secondItem="Cmx-Ox-hif" secondAttribute="centerY" constant="-30" id="3wI-K7-30G"/>
                                                 <constraint firstItem="0ND-qs-PdO" firstAttribute="centerY" secondItem="Cmx-Ox-hif" secondAttribute="centerY" id="7Nd-7k-UQF"/>
+                                                <constraint firstItem="eoG-jN-BdI" firstAttribute="centerX" secondItem="bQS-GN-wp6" secondAttribute="centerX" id="7qp-Q8-cYx"/>
                                                 <constraint firstItem="bQS-GN-wp6" firstAttribute="leading" secondItem="0ND-qs-PdO" secondAttribute="trailing" constant="34.5" id="JeX-Hu-Y7V"/>
                                                 <constraint firstItem="0ND-qs-PdO" firstAttribute="height" secondItem="Cmx-Ox-hif" secondAttribute="height" multiplier="0.725" constant="-10" id="Xte-bW-Nxc"/>
                                                 <constraint firstAttribute="trailing" secondItem="bQS-GN-wp6" secondAttribute="trailing" constant="20" symbolic="YES" id="Y4V-US-Jff"/>
                                                 <constraint firstItem="eoG-jN-BdI" firstAttribute="top" secondItem="bQS-GN-wp6" secondAttribute="bottom" constant="11" id="aII-Re-2h1"/>
-                                                <constraint firstItem="eoG-jN-BdI" firstAttribute="centerX" secondItem="bQS-GN-wp6" secondAttribute="centerX" id="hZZ-iR-iiz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="-642"/>
+            <point key="canvasLocation" x="-1423.1884057971015" y="-642.1875"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Ycx-l9-p7N">
@@ -113,7 +113,10 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRV-8l-4zb">
-                                <rect key="frame" x="126" y="705" width="163" height="36"/>
+                                <rect key="frame" x="40" y="705" width="334" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="NLf-MN-zIG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
@@ -134,8 +137,8 @@
                             <constraint firstItem="ARo-py-yNc" firstAttribute="leading" secondItem="mMJ-7U-nyK" secondAttribute="leading" constant="50" id="Gz8-42-CWN"/>
                             <constraint firstItem="mMJ-7U-nyK" firstAttribute="trailing" secondItem="bYp-VY-g1f" secondAttribute="trailing" constant="125" id="IbP-z0-Kfb"/>
                             <constraint firstItem="ARo-py-yNc" firstAttribute="centerX" secondItem="mMJ-7U-nyK" secondAttribute="centerX" id="NGi-Ga-yyX"/>
-                            <constraint firstItem="DRV-8l-4zb" firstAttribute="leading" secondItem="mMJ-7U-nyK" secondAttribute="leading" constant="126" id="ZT8-Oo-SaJ"/>
-                            <constraint firstItem="mMJ-7U-nyK" firstAttribute="trailing" secondItem="DRV-8l-4zb" secondAttribute="trailing" constant="125" id="bnZ-IJ-AlG"/>
+                            <constraint firstItem="DRV-8l-4zb" firstAttribute="leading" secondItem="mMJ-7U-nyK" secondAttribute="leading" constant="40" id="ZT8-Oo-SaJ"/>
+                            <constraint firstItem="mMJ-7U-nyK" firstAttribute="trailing" secondItem="DRV-8l-4zb" secondAttribute="trailing" constant="40" id="bnZ-IJ-AlG"/>
                             <constraint firstItem="ARo-py-yNc" firstAttribute="top" secondItem="mMJ-7U-nyK" secondAttribute="top" constant="100" id="j5Y-dI-2Cu"/>
                             <constraint firstItem="bYp-VY-g1f" firstAttribute="leading" secondItem="mMJ-7U-nyK" secondAttribute="leading" constant="126" id="kwf-N3-I9R"/>
                             <constraint firstItem="DRV-8l-4zb" firstAttribute="top" secondItem="bYp-VY-g1f" secondAttribute="bottom" constant="65" id="yhL-2x-gxj"/>

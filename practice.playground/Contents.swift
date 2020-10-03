@@ -116,21 +116,31 @@ import UIKit
 //input 12345
 //let stringarr = Array(readLine()!).map {Int(String($0))! }
 //print(stringarr) //[1, 2, 3, 4, 5]
-import Foundation
+//import Foundation
 //print("Hello")
 //
 //var line = readLine()!
 
-var arr = [1, 2, 3, 4]
-for i in 0...arr {
-    print([i])
+//var arr = [1, 2, 3, 4]
+//for i in 0...arr {
+//    print([i])
+//}
+//
+//while let value = readLine() {
+//   let a = value.components(separatedBy: " ")
+//    let b = Int(a[0])!
+//    let c = Int(a[1])!
+//    print(a + b)
+//
+//}
+
+import Foundation
+
+func solution(_ numbers:[Int]) -> [Int] {
+    let set = set<Int>()
 }
 
-while let value = readLine() {
-   let a = value.components(separatedBy: " ")
-    let b = Int(a[0])!
-    let c = Int(a[1])!
-    print(a + b)
-    
-}
+solution([2,1,3,4,1])
+
+
 

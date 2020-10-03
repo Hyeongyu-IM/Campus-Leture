@@ -25,18 +25,19 @@ class BountyViewControlerViewController: UIViewController, UITableViewDataSource
     // > BountyViewModel을 만들고, 뷰레이어에서 필요한 메서드 만들기
     // > 모델 가지고 있기 ,, BountyInfo 들
     
-//    let bountyInfoList: [BountyInfo] = [
-//        BountyInfo(name: "brook", bounty: 33000000),
-//        BountyInfo(name: "chopper", bounty: 50),
-//        BountyInfo(name: "franky", bounty: 44000000),
-//        BountyInfo(name: "luffy", bounty: 300000000),
-//        BountyInfo(name: "nami", bounty: 16000000),
-//        BountyInfo(name: "robin", bounty: 80000000),
-//        BountyInfo(name: "sanji", bounty: 77000000),
-//        BountyInfo(name: "zoro", bounty: 120000000)
-//    ]
+    //얘는 모델입니다.
+    let bountyInfoList: [BountyInfo] = [
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
     
-    //뷰모델 생성
+    //뷰모델 생성 : 모델에 직접적으로 엑세스하는 것을 막기위해.
     // 위모델을 없앴을때 빨간색 에러가 뜨는 것들을 수정해 주어야 한다.
     let viewModel = BountyViewModel()
     
@@ -163,11 +164,14 @@ class BountyViewModel {
         return sortedList
     }
     
+    // 클로저 인가봐 ㅇㅅㅇ
     var numOfBountyInfoList: Int {
       return bountyInfoList.count
     }
     
+    // 받는 인덱스의 정보 즉 데이터를 골라서 보내줌 리턴타입은 스트럭쳐인 BountyInfo
     func bountyInfo(at index: Int) -> BountyInfo {
+        // 정렬된 리스트를 출력하게된다
         return sortedList[index]
     }
 }

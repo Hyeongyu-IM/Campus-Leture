@@ -73,6 +73,8 @@ class DetailViewController: UIViewController {
 class DetailViewModel {
     var bountyInfo: BountyInfo?
     
+    // 이 메서드는 prepare로부터 받아오는 값을 uiupdate에 넘겨줄때 쓰인다 . 별표!!!#########
+    // 받는값은 똑같이 바운티 인포로 들어오기때문에 옵셔널!
     func update(model: BountyInfo?) {
         bountyInfo = model
     }
