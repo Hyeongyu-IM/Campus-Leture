@@ -136,11 +136,31 @@ import UIKit
 
 import Foundation
 
-func solution(_ numbers:[Int]) -> [Int] {
-    let set = set<Int>()
-}
+//func solution(_ board:[[Int]], _ moves:[Int]) -> Int {
+//    var board = board
+//    var basket: [Int] = []
+//    var result = 0
+//
+//    for i in moves{
+//        let direction = move - 1
+//        for folk in 0..<board.count {
+//            let doll = board[folk][direction]
+//            guard doll != 0 else { continue }
+//            board[folk][direction] = 0
+//            if basket.last == doll {
+//                basket.removeLast()
+//                result += 2
+//            } else { basket.append(doll) }
+//            break
+//        }
+//    }
+//    return result
+//}
 
-solution([2,1,3,4,1])
-
-
-
+//크레인 인형뽑기 게임
+// 배열 1 = 몇개의 배열이 올지는 모른다.
+// 배열 2 = 배열을 선택해서 뽑는다. 선택한 배열의 특정 자릿수가 0이면 다음 배열로 이동.
+// 뽑은 숫자를 다른 변수에 담고, 뽑은 숫자는 0으로 바꾼다.
+// 담은 변수를 바구니변수에 담기전에, 끝의 숫자와 같으면 카운트 +2를하고 삭제한다.
+// 만약 같지 않다면 추가.
+// 만약 추가되는 숫자가 생기면 해당 반복을 중지하고 새로운 반복을 시작한다.
