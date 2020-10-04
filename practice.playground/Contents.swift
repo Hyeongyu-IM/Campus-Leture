@@ -1,4 +1,27 @@
-import UIKit
+import Foundation
+
+func solution(_ answers:[Int]) -> [Int] {
+    let person1 = [1, 2, 3, 4, 5]
+    let person2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    let person3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    var top: [Int: Int] = [:]
+
+    for i in 0..<answers.count {
+        if answers[i] == person1[i%person1.count] {
+            top[1] = (top[1] ?? 0)+1
+        }
+        if answers[i] == person2[i%person2.count] {
+            top[2] = (top[2] ?? 0)+1
+        }
+        if answers[i] == person3[i%person3.count] {
+            top[3] = (top[3] ?? 0)+1
+        }
+    }
+    let topOftop = top.values.max()!
+    let result = top.filter { $0.value == topOftop }.keys.sorted()
+
+    return result
+}
 ////
 ////var i = 0
 ////while i < 5 {  // i 가 5보다 작으니까 0에서 1.2 3. 4 5 이렇게 커짐
@@ -134,7 +157,7 @@ import UIKit
 //
 //}
 
-import Foundation
+
 
 //func solution(_ board:[[Int]], _ moves:[Int]) -> Int {
 //    var board = board
