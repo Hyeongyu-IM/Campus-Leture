@@ -8,38 +8,69 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-    //MVVM
-    
-    //Model
-    // - BountyInfo
-    // > BountyInfo 만들자
-    
-    //View
-    // - imgView, nameLabel, BountyLabel
-    // > View들은 ViewModel을 통해서 구성되기 ?
-    
-    //ViewModel
-    // - DetailViewModel
-    // > 뷰레이어에서 필요한 메서드 만들기
-    // > 모델 가지고 있기 ,, BountyInfo 들
-    
-    
+    // 여기서 한번 에러가 발생했는데 가져온 constant가 제대로 연결이되지 않아서 인스턴스 값을 받지 못해 크래쉬가 났었다.
+    // 에러메시지 : unrecognized selector sent to instance
        @IBOutlet weak var imgView: UIImageView!
        @IBOutlet weak var nameLabel: UILabel!
        @IBOutlet weak var bountyLabel: UILabel!
+    @IBOutlet weak var nameLabelCenterX: NSLayoutConstraint!
+    @IBOutlet weak var bountyLabelCenterX: NSLayoutConstraint!
     
-//    var name: String?
-//    var bounty: Int?
-//    var bountyInfo: BountyInfo?
-
     let viewModel = DetailViewModel()
     
-    //viewDidLoad는 뷰컨트롤러가 실제 메모리에 올라오기 직전에 호출됩니다.
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        // Do any additional setup after loading the view.
+        prepareAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showAnimation()
+    }
+    
+    private func prepareAnimation() {
+        //Constant 활용 화면 바깥으로 내보내는것
+//        nameLabelCenterX.constant = view.bounds.width
+//        bountyLabelCenterX.constant = view.bounds.width
+        
+        //Property활용
+        nameLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        bountyLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        
+        // 투명하게 = 0
+        nameLabel.alpha = 0
+        bountyLabel.alpha = 0
+    }
+    
+    private func showAnimation() {
+        nameLabelCenterX.constant = 0
+        bountyLabelCenterX.constant = 0
+        
+        // 실질적인 애니메이션이 어떻게 출력될지 세팅하는 코드입니다.
+        // Constant활용
+//        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
+//            self.view.layoutIfNeeded()
+//        }, completion: nil)
+//        UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+//            self.view.layoutIfNeeded()
+//        }, completion: nil)
+//
+//        UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        
+        //Property 활용
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+            self.nameLabel.transform = CGAffineTransform.identity
+            self.nameLabel.alpha = 1
+            
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+            self.bountyLabel.transform = CGAffineTransform.identity
+            self.bountyLabel.alpha = 1
+        }, completion: nil)
+        
+        UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
     func  updateUI() {
@@ -49,22 +80,10 @@ class DetailViewController: UIViewController {
             imgView.image = bountyInfo.image
             nameLabel.text = bountyInfo.name
             bountyLabel.text = "\(bountyInfo.bounty)"
-//        if let bountyInfo = self.bountyInfo {
-//
-//            imgView.image = bountyInfo.image
-//            nameLabel.text = bountyInfo.name
-//            bountyLabel.text = "\(bountyInfo.bounty)"
         }
-//        if let name = self.name, let bounty = self.bounty {
-//            let img = UIImage(named: "\(name).jpg")
-//            imgView.image = img
-//            nameLabel.text = name
-//            bountyLabel.text = "\(bounty)"
-//        }
     }
   
     @IBAction func close(_ sender: Any) {
-        // 눌리면 사라지게 만들어준다 completion은 사라지고 나서 동작할 액션을 입력할수있는 코드
         dismiss(animated: true, completion: nil)
     }
     
@@ -72,9 +91,6 @@ class DetailViewController: UIViewController {
 
 class DetailViewModel {
     var bountyInfo: BountyInfo?
-    
-    // 이 메서드는 prepare로부터 받아오는 값을 uiupdate에 넘겨줄때 쓰인다 . 별표!!!#########
-    // 받는값은 똑같이 바운티 인포로 들어오기때문에 옵셔널!
     func update(model: BountyInfo?) {
         bountyInfo = model
     }

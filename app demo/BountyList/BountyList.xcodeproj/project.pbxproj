@@ -107,10 +107,10 @@
 				2C75872A2525618700562316 /* SceneDelegate.swift */,
 				2C75872E2525618700562316 /* Main.storyboard */,
 				2C75875E2525637800562316 /* BountyViewControlerViewController.swift */,
-				2C7587312525618900562316 /* Assets.xcassets */,
+				2C75876D2525C5FF00562316 /* DetailViewController.swift */,
 				2C7587332525618900562316 /* LaunchScreen.storyboard */,
 				2C7587362525618900562316 /* Info.plist */,
-				2C75876D2525C5FF00562316 /* DetailViewController.swift */,
+				2C7587312525618900562316 /* Assets.xcassets */,
 			);
 			path = BountyList;
 			sourceTree = "<group>";

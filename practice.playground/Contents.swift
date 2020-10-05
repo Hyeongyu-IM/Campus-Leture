@@ -1,27 +1,46 @@
 import Foundation
+// 배열이 주어졌을때 임의의 정수 i 와 q 사이의 정렬된 배열에서 r을 찾는 문제
+// 배열 = array
+// 조건 = command = index1 = 길이기준 i, index2 = 길이기준 q, index3 = 정렬된배열의 길이기준 r
+//1. 배열을 자른다. 2. 배열을 정렬한다. 3. 배열에서 r을 찾는다. 4. 찾은 r을 새로운 배열에 넣는다.
+//let person1 = [1, 2, 3, 4, 5]
+//person1[0...3]
+//func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
+//    var result = [Int]()
+//
+//    for slice in 0..<commands.count {
+//        var newBasket = array[commands[slice][0]-1...commands[slice][1]-1].sorted()
+//        result.append(newBasket[commands[slice][2]-1])
+//    }
+//
+//    return result
+//}
+//func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] { return commands.map{ let i = $0[0]-1; let j = $0[1]-1; let k = $0[2]-1 return array[i...j].sorted()[k] } } 이렇게도 풀다니... ㅠㅜ
 
-func solution(_ answers:[Int]) -> [Int] {
-    let person1 = [1, 2, 3, 4, 5]
-    let person2 = [2, 1, 2, 3, 2, 4, 2, 5]
-    let person3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
-    var top: [Int: Int] = [:]
 
-    for i in 0..<answers.count {
-        if answers[i] == person1[i%person1.count] {
-            top[1] = (top[1] ?? 0)+1
-        }
-        if answers[i] == person2[i%person2.count] {
-            top[2] = (top[2] ?? 0)+1
-        }
-        if answers[i] == person3[i%person3.count] {
-            top[3] = (top[3] ?? 0)+1
-        }
-    }
-    let topOftop = top.values.max()!
-    let result = top.filter { $0.value == topOftop }.keys.sorted()
 
-    return result
-}
+//func solution(_ answers:[Int]) -> [Int] {
+//    let person1 = [1, 2, 3, 4, 5]
+//    let person2 = [2, 1, 2, 3, 2, 4, 2, 5]
+//    let person3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+//    var top: [Int: Int] = [:]
+//
+//    for i in 0..<answers.count {
+//        if answers[i] == person1[i%person1.count] {
+//            top[1] = (top[1] ?? 0)+1
+//        }
+//        if answers[i] == person2[i%person2.count] {
+//            top[2] = (top[2] ?? 0)+1
+//        }
+//        if answers[i] == person3[i%person3.count] {
+//            top[3] = (top[3] ?? 0)+1
+//        }
+//    }
+//    let topOftop = top.values.max()!
+//    let result = top.filter { $0.value == topOftop }.keys.sorted()
+//
+//    return result
+//}
 ////
 ////var i = 0
 ////while i < 5 {  // i 가 5보다 작으니까 0에서 1.2 3. 4 5 이렇게 커짐
