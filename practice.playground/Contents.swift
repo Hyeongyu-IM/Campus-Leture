@@ -1,4 +1,61 @@
 import Foundation
+
+// 체육복
+// 바로 앞이나 뒤만 체육복을 빌려줄수 있습니다. 조건문 두개 if if
+// 최대한 많은 학생이 들을수 있게
+// 전체 학생수 n , 도난당한 학생 lost, 여벌의 체육복 reserve
+// 수업을 듣는학생수 return
+// reserve의 학생도 도난당할수 있다.
+// 여벌복이 있어야 빌려줄수 있다.
+
+// 먼저 여벌복을 가진 학생을 새로운 배열에 담는다. 도난학생에서 빠집니다.[ 새로운 도난학생 배열 ]
+//여벌복을 소진하면 값을 0으로 바꾸어준다. 매개변수 복제
+
+// 여벌복을 가진 배열을 번호의 앞뒤로 검사해서 lost가 나올경우 해당 로스트의 값을 0으로 변환한다. 매개변수 복제
+// 리턴값 계산 = n - 남아있는 lost 배열의 숫자 = 듣는 학생수
+
+func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
+    var realLost = lost.sorted()
+    var realReserve = reserve.sorted()
+    var count = 0
+    
+    for i in 0..<realLost.count {
+        for q in 0..<realReserve.count {
+            if realLost[i] == realReserve[q] {
+                realLost[i] = 0
+                realReserve[q] = 0
+                count += 1
+                break
+            }
+        }
+    }
+    
+    //var losted = lost.filter{!reserve.contains($0)}
+    //var reserved = reserve.filter{!lost.contains($0)}
+
+    for num in 0..<realLost.count {
+        for cloth in 0..<realReserve.count {
+            if realReserve[cloth] == 0 || realLost[num] == 0 {
+                continue
+            } else if realLost[num]-1 == realReserve[cloth] ||
+                        realLost[num]+1 == realReserve[cloth] {
+                realReserve[cloth] = 0
+                count += 1
+                break
+            }
+        }
+    }
+    
+    return n - lost.count + count
+    
+}
+solution(5 ,[2, 4], [1, 3, 5] )
+
+
+
+
+
+
 // 배열이 주어졌을때 임의의 정수 i 와 q 사이의 정렬된 배열에서 r을 찾는 문제
 // 배열 = array
 // 조건 = command = index1 = 길이기준 i, index2 = 길이기준 q, index3 = 정렬된배열의 길이기준 r
