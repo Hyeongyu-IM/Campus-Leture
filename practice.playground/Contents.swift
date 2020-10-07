@@ -1,4 +1,35 @@
 import Foundation
+// 2016년은 윤년이다 == 366일
+// 2016 1 1 = 금요일
+// 2016 2월은 29일까지
+// 생각하여야할 것은 fri를 1로 시작해서 한바뀌돌면 8이라는것
+func solution(_ a:Int, _ b:Int) -> String {
+let weekArray = [ "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+ let monthDayArray = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    var first = 4
+    for day in 0..<a-1 {
+        first += monthDayArray[day]
+    }
+    first += b-1
+
+    return "\(weekArray[first%7])"
+}
+
+//func solution(_ a:Int, _ b:Int) -> String {
+//
+//    let w = ["THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"]
+//    let monthDay = [ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//    let totalDay = monthDay[0..<a-1].reduce(0, +) + b
+//
+//    return w[totalDay % 7]
+//}
+ 
+
+
+
+
+
 
 // 체육복
 // 바로 앞이나 뒤만 체육복을 빌려줄수 있습니다. 조건문 두개 if if
@@ -14,46 +45,42 @@ import Foundation
 // 여벌복을 가진 배열을 번호의 앞뒤로 검사해서 lost가 나올경우 해당 로스트의 값을 0으로 변환한다. 매개변수 복제
 // 리턴값 계산 = n - 남아있는 lost 배열의 숫자 = 듣는 학생수
 
-func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
-    var realLost = lost.sorted()
-    var realReserve = reserve.sorted()
-    var count = 0
-    
-    for i in 0..<realLost.count {
-        for q in 0..<realReserve.count {
-            if realLost[i] == realReserve[q] {
-                realLost[i] = 0
-                realReserve[q] = 0
-                count += 1
-                break
-            }
-        }
-    }
-    
-    //var losted = lost.filter{!reserve.contains($0)}
-    //var reserved = reserve.filter{!lost.contains($0)}
-
-    for num in 0..<realLost.count {
-        for cloth in 0..<realReserve.count {
-            if realReserve[cloth] == 0 || realLost[num] == 0 {
-                continue
-            } else if realLost[num]-1 == realReserve[cloth] ||
-                        realLost[num]+1 == realReserve[cloth] {
-                realReserve[cloth] = 0
-                count += 1
-                break
-            }
-        }
-    }
-    
-    return n - lost.count + count
-    
-}
-solution(5 ,[2, 4], [1, 3, 5] )
-
-
-
-
+//func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
+//    var realLost = lost.sorted()
+//    var realReserve = reserve.sorted()
+//    var count = 0
+//
+//    for i in 0..<realLost.count {
+//        for q in 0..<realReserve.count {
+//            if realLost[i] == realReserve[q] {
+//                realLost[i] = 0
+//                realReserve[q] = 0
+//                count += 1
+//                break
+//            }
+//        }
+//    }
+//
+//    //var losted = lost.filter{!reserve.contains($0)}
+//    //var reserved = reserve.filter{!lost.contains($0)}
+//
+//    for num in 0..<realLost.count {
+//        for cloth in 0..<realReserve.count {
+//            if realReserve[cloth] == 0 || realLost[num] == 0 {
+//                continue
+//            } else if realLost[num]-1 == realReserve[cloth] ||
+//                        realLost[num]+1 == realReserve[cloth] {
+//                realReserve[cloth] = 0
+//                count += 1
+//                break
+//            }
+//        }
+//    }
+//
+//    return n - lost.count + count
+//
+//}
+//solution(5 ,[2, 4], [1, 3, 5] )
 
 
 // 배열이 주어졌을때 임의의 정수 i 와 q 사이의 정렬된 배열에서 r을 찾는 문제
