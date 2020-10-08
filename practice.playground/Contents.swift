@@ -1,20 +1,45 @@
 import Foundation
-// 2016년은 윤년이다 == 366일
-// 2016 1 1 = 금요일
-// 2016 2월은 29일까지
-// 생각하여야할 것은 fri를 1로 시작해서 한바뀌돌면 8이라는것
-func solution(_ a:Int, _ b:Int) -> String {
-let weekArray = [ "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
- let monthDayArray = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//가운데 문자열 출력
+//문자열을 배열의 형태로 -> 배열에서 문자열의 형태로 ->
+//func solution(_ s:String) -> String {
+//    var result = [String]()
+//    let arr = s.map {String($0)}
+//    let judge = arr.count%2 == 0 ? true : false
+//    if judge {
+//        result.append(arr[arr.count/2-1])
+//        result.append(arr[arr.count/2])
+//    } else {
+//        result.append(arr[arr.count/2])
+//    }
+//    return result.joined()
+//}
+//solution("abde")
+let asdf = "asdf"
+String(asdf).count
 
-    var first = 4
-    for day in 0..<a-1 {
-        first += monthDayArray[day]
-    }
-    first += b-1
+String(Array(asdf)[(asdf.count/2)-1...(asdf.count/2)])
 
-    return "\(weekArray[first%7])"
-}
+var arr = Array(asdf)[0]
+arr
+var str = String(arr)
+
+// 2016년
+//// 2016년은 윤년이다 == 366일
+//// 2016 1 1 = 금요일
+//// 2016 2월은 29일까지
+//// 생각하여야할 것은 fri를 1로 시작해서 한바뀌돌면 8이라는것
+//func solution(_ a:Int, _ b:Int) -> String {
+//let weekArray = [ "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+// let monthDayArray = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//
+//    var first = 4
+//    for day in 0..<a-1 {
+//        first += monthDayArray[day]
+//    }
+//    first += b-1
+//
+//    return "\(weekArray[first%7])"
+//}
 
 //func solution(_ a:Int, _ b:Int) -> String {
 //
@@ -24,11 +49,6 @@ let weekArray = [ "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 //
 //    return w[totalDay % 7]
 //}
- 
-
-
-
-
 
 
 // 체육복
