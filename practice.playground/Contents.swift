@@ -1,4 +1,9 @@
-import Foundation
+import UIKit
+func solution(_ arr:[Int], _ divisor:Int) -> [Int] {
+    
+let check = arr.filter { ($0)%divisor == 0 }
+return check.count == 0 ? [-1] : check.sorted()
+}
 //가운데 문자열 출력
 //문자열을 배열의 형태로 -> 배열에서 문자열의 형태로 ->
 //func solution(_ s:String) -> String {
@@ -14,14 +19,14 @@ import Foundation
 //    return result.joined()
 //}
 //solution("abde")
-let asdf = "asdf"
-String(asdf).count
-
-String(Array(asdf)[(asdf.count/2)-1...(asdf.count/2)])
-
-var arr = Array(asdf)[0]
-arr
-var str = String(arr)
+//let asdf = "asdf"
+//String(asdf).count
+//
+//String(Array(asdf)[(asdf.count/2)-1...(asdf.count/2)])
+//
+//var arr = Array(asdf)[0]
+//arr
+//var str = String(arr)
 
 // 2016년
 //// 2016년은 윤년이다 == 366일

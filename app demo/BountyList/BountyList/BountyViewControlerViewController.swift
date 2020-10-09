@@ -25,10 +25,11 @@ class BountyViewControlerViewController: UIViewController, UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    //몇개의 셀을표시?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfBountyInfoList
     }
+    
     //셀은 어떻게 표현할까요?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
