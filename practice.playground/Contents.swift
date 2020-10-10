@@ -1,9 +1,52 @@
 import UIKit
-func solution(_ arr:[Int], _ divisor:Int) -> [Int] {
-    
-let check = arr.filter { ($0)%divisor == 0 }
-return check.count == 0 ? [-1] : check.sorted()
+//배열을 인덱스별로 나누어서 새로 만들어준다 [[Int]]
+//나눈 배열을 문자열의 알파벳으로 다시 쪼개준다. [[],[],[],[]]
+// 쪼갠배열의 알파벳 순서 비교하기
+
+
+func solution(_ strings:[String], _ n:Int) -> [String] {
+    return strings.sorted{  Array($0)[n] == Array($1)[n] ? $0 < $1 :  Array($0)[n] < Array($1)[n] }
 }
+solution(["abcd", "abce", "cdx"], 2)
+
+let arr  = ["abcd", "abce", "cdx"]
+
+var arr2 = Array(arr[0])[2]
+
+let str  = "strtttt"
+let arr3 = Array(str)
+//let str = "asdf"
+//let str2 = "aadf"
+//let index = str[str.index(str.startIndex, offsetBy: 1)] //"s"
+//let index2 = str2[str.index(str.startIndex, offsetBy: 1)] // "a"
+// index < index2 // false
+
+//func solution(_ a:Int, _ b:Int) -> Int {
+//   var result = a
+//    if a == b {
+//        result = a
+//    } else if a > b {
+//        result = b
+//        for i in b+1...a {
+//            result += i
+//        }
+//    } else {
+//    for i in a+1...b {
+//        result += i
+//    }
+//
+//    }
+//    return result
+//}
+//solution(3, 3)
+
+
+
+//func solution(_ arr:[Int], _ divisor:Int) -> [Int] {
+//
+//let check = arr.filter { ($0)%divisor == 0 }
+//return check.count == 0 ? [-1] : check.sorted()
+//}
 //가운데 문자열 출력
 //문자열을 배열의 형태로 -> 배열에서 문자열의 형태로 ->
 //func solution(_ s:String) -> String {
