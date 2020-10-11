@@ -1,20 +1,26 @@
 import UIKit
+
+var asf = "abcde"
+String(Array(asf)[(asf.count/2)-1...(asf.count/2)])
+
+var asdf = Array(asf)
+asdf[0] == "a"
 //배열을 인덱스별로 나누어서 새로 만들어준다 [[Int]]
 //나눈 배열을 문자열의 알파벳으로 다시 쪼개준다. [[],[],[],[]]
 // 쪼갠배열의 알파벳 순서 비교하기
-
-
-func solution(_ strings:[String], _ n:Int) -> [String] {
-    return strings.sorted{  Array($0)[n] == Array($1)[n] ? $0 < $1 :  Array($0)[n] < Array($1)[n] }
-}
-solution(["abcd", "abce", "cdx"], 2)
-
-let arr  = ["abcd", "abce", "cdx"]
-
-var arr2 = Array(arr[0])[2]
-
-let str  = "strtttt"
-let arr3 = Array(str)
+//
+//
+//func solution(_ strings:[String], _ n:Int) -> [String] {
+//    return strings.sorted{  Array($0)[n] == Array($1)[n] ? $0 < $1 :  Array($0)[n] < Array($1)[n] }
+//}
+//solution(["abcd", "abce", "cdx"], 2)
+//
+//let arr  = ["abcd", "abce", "cdx"]
+//
+//var arr2 = Array(arr[0])[2]
+//
+//let str  = "strtttt"
+//let arr3 = Array(str)
 //let str = "asdf"
 //let str2 = "aadf"
 //let index = str[str.index(str.startIndex, offsetBy: 1)] //"s"
