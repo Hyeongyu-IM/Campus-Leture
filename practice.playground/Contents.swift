@@ -1,10 +1,25 @@
 import UIKit
 
-var asf = "abcde"
-String(Array(asf)[(asf.count/2)-1...(asf.count/2)])
+var str = "pPoooyY"
+var arr = Array(str.lowercased())
+print(arr)
 
-var asdf = Array(asf)
-asdf[0] == "a"
+func solution(_ s:String) -> Bool
+{
+    let arr = Array(s.lowercased())
+    let p = arr.filter { ($0) == "p" }.count
+    let y = arr.filter { ($0) == "y" }.count
+    
+    return p == y || (p == 0 && y == 0) ? true : false
+    
+}
+
+solution("Pyy")
+//var asf = "abcde"
+//String(Array(asf)[(asf.count/2)-1...(asf.count/2)])
+//
+//var asdf = Array(asf)
+//asdf[0] == "a"
 //배열을 인덱스별로 나누어서 새로 만들어준다 [[Int]]
 //나눈 배열을 문자열의 알파벳으로 다시 쪼개준다. [[],[],[],[]]
 // 쪼갠배열의 알파벳 순서 비교하기
