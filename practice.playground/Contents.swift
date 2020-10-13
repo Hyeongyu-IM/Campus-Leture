@@ -1,20 +1,33 @@
 import UIKit
 
-var str = "pPoooyY"
-var arr = Array(str.lowercased())
-print(arr)
-
-func solution(_ s:String) -> Bool
-{
-    let arr = Array(s.lowercased())
-    let p = arr.filter { ($0) == "p" }.count
-    let y = arr.filter { ($0) == "y" }.count
-    
-    return p == y || (p == 0 && y == 0) ? true : false
-    
+let num = 45
+let seven = 7
+var str = String(num, radix: 3)
+var str2: String = ""
+for i in str.reversed() {
+   str2 += String(i)
 }
+String(seven, radix: 3)
 
-solution("Pyy")
+Int(str2, radix: 10)
+
+
+
+//var str = "pPoooyY"
+//var arr = Array(str.lowercased())
+//print(arr)
+//
+//func solution(_ s:String) -> Bool
+//{
+//    let arr = Array(s.lowercased())
+//    let p = arr.filter { ($0) == "p" }.count
+//    let y = arr.filter { ($0) == "y" }.count
+//
+//    return p == y || (p == 0 && y == 0) ? true : false
+//
+//}
+//
+//solution("Pyy")
 //var asf = "abcde"
 //String(Array(asf)[(asf.count/2)-1...(asf.count/2)])
 //
