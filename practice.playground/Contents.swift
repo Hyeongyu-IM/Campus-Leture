@@ -1,15 +1,22 @@
 import UIKit
 
-let num = 45
-let seven = 7
-var str = String(num, radix: 3)
-var str2: String = ""
-for i in str.reversed() {
-   str2 += String(i)
-}
-String(seven, radix: 3)
+func solution(_ s:String) -> String {
+    let abc = "abcdefghijklmnopqrstuvwxyz"
+    let lowercase = (s.filter { abc.firstIndex(of: $0) != nil}).sorted(by: >)
+    let uppercase = (s.filter { lowercase.firstIndex(of: $0) == nil}).sorted(by: >)
 
-Int(str2, radix: 10)
+    return String(lowercase) + String(uppercase)
+}
+//let num = 45
+//let seven = 7
+//var str = String(num, radix: 3)
+//var str2: String = ""
+//for i in str.reversed() {
+//   str2 += String(i)
+//}
+//String(seven, radix: 3)
+//
+//Int(str2, radix: 10)
 
 
 
