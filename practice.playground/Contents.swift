@@ -1,12 +1,21 @@
 import UIKit
 
-func solution(_ s:String) -> String {
-    let abc = "abcdefghijklmnopqrstuvwxyz"
-    let lowercase = (s.filter { abc.firstIndex(of: $0) != nil}).sorted(by: >)
-    let uppercase = (s.filter { lowercase.firstIndex(of: $0) == nil}).sorted(by: >)
+func solution(_ s:String) -> Bool {
+    if s.count == 4 || s.count == 6 {
+    let num = "0123456789"
+   let without = s.filter { num.firstIndex(of: $0) != nil }
 
-    return String(lowercase) + String(uppercase)
+return s.count == without.count
+    }
+    return false
 }
+//func solution(_ s:String) -> String {
+//    let abc = "abcdefghijklmnopqrstuvwxyz"
+//    let lowercase = (s.filter { abc.firstIndex(of: $0) != nil}).sorted(by: >)
+//    let uppercase = (s.filter { lowercase.firstIndex(of: $0) == nil}).sorted(by: >)
+//
+//    return String(lowercase) + String(uppercase)
+//}
 //let num = 45
 //let seven = 7
 //var str = String(num, radix: 3)
