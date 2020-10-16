@@ -1,14 +1,38 @@
 import UIKit
-
-func solution(_ s:String) -> Bool {
-    if s.count == 4 || s.count == 6 {
-    let num = "0123456789"
-   let without = s.filter { num.firstIndex(of: $0) != nil }
-
-return s.count == without.count
+func solution1(_ n: Int) -> Int {
+    var result = 0
+    var array = Array.init(repeating: false, count: n+1)
+    
+    for i in 2...n {
+        if (!array[i]){
+            result += 1
+            for j in stride(from: i, through: n, by: i) {
+               array[j] = true
+            }
+        }
     }
-    return false
+    return result
 }
+solution1(10)
+// 숫자들이 있고
+// 순서대로 숫자들을 곱하면서 배수에 해당하는 숫자를 0으로 만들어준다.
+// 대신 숫자가 0이면 다음 숫자 부터 시작
+
+//let seoul = ["Jane me", "Kim me"]
+//func solution(_ seoul:[String]) -> String {
+//    return "김서방은 \(seoul.firstIndex(of: "Kim me")!)에 있다"
+//}
+//solution(seoul)
+//"asdf".last
+//func solution(_ s:String) -> Bool {
+//    if s.count == 4 || s.count == 6 {
+//    let num = "0123456789"
+//   let without = s.filter { num.firstIndex(of: $0) != nil }
+//
+//return s.count == without.count
+//    }
+//    return false
+//}
 //func solution(_ s:String) -> String {
 //    let abc = "abcdefghijklmnopqrstuvwxyz"
 //    let lowercase = (s.filter { abc.firstIndex(of: $0) != nil}).sorted(by: >)
