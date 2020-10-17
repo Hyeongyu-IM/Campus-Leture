@@ -1,19 +1,28 @@
 import UIKit
-func solution1(_ n: Int) -> Int {
-    var result = 0
-    var array = Array.init(repeating: false, count: n+1)
-    
-    for i in 2...n {
-        if (!array[i]){
-            result += 1
-            for j in stride(from: i, through: n, by: i) {
-               array[j] = true
-            }
-        }
+
+func solution(_ n:Int) -> String {
+    var a = "수박"
+    for i in 0...n/2 {
+        a = a + a
     }
-    return result
+    return String(Array(a)[0..<n])
 }
-solution1(10)
+print(solution(50))
+//func solution1(_ n: Int) -> Int {
+//    var result = 0
+//    var array = Array.init(repeating: false, count: n+1)
+//
+//    for i in 2...n {
+//        if (!array[i]){
+//            result += 1
+//            for j in stride(from: i, through: n, by: i) {
+//               array[j] = true
+//            }
+//        }
+//    }
+//    return result
+//}
+
 // 숫자들이 있고
 // 순서대로 숫자들을 곱하면서 배수에 해당하는 숫자를 0으로 만들어준다.
 // 대신 숫자가 0이면 다음 숫자 부터 시작

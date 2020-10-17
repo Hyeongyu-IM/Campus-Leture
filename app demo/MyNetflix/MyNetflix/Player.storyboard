@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,25 +17,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0Q-4y-bTn">
-                                <rect key="frame" x="706" y="42" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonTapped:" destination="mbs-Ed-6wm" eventType="touchUpInside" id="CXF-dh-dQv"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BL3-xE-6pb" customClass="PlayerView" customModule="MyNetflix" customModuleProvider="target">
+                                <rect key="frame" x="44" y="0.0" width="724" height="375"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me9-Rd-jLH">
+                                <rect key="frame" x="44" y="0.0" width="724" height="375"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yq-8r-Z53">
+                                        <rect key="frame" x="342" y="167.66666666666666" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="GCu-8K-tpT"/>
+                                            <constraint firstAttribute="height" constant="40" id="KFc-Hf-XId"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="play.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <state key="selected" image="pause.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePlaybutton:" destination="mbs-Ed-6wm" eventType="touchUpInside" id="8kX-Fi-CSQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3G-hH-SKo">
+                                        <rect key="frame" x="664" y="16" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="W33-lO-BzB"/>
+                                            <constraint firstAttribute="width" constant="40" id="c6v-GE-cq4"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="xmark" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="mbs-Ed-6wm" eventType="touchUpInside" id="B20-RD-TUR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0yq-8r-Z53" firstAttribute="centerX" secondItem="me9-Rd-jLH" secondAttribute="centerX" id="Nnu-ad-w1f"/>
+                                    <constraint firstItem="0yq-8r-Z53" firstAttribute="centerY" secondItem="me9-Rd-jLH" secondAttribute="centerY" id="Pok-Cw-685"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q3G-hH-SKo" secondAttribute="trailing" constant="20" id="vHz-D8-1gc"/>
+                                    <constraint firstItem="Q3G-hH-SKo" firstAttribute="top" secondItem="me9-Rd-jLH" secondAttribute="top" constant="16" id="y9G-Lf-1fx"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Du5-Th-wYi"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="T0Q-4y-bTn" firstAttribute="leading" secondItem="Du5-Th-wYi" secondAttribute="leading" constant="662" id="6M9-Be-Rbu"/>
-                            <constraint firstItem="T0Q-4y-bTn" firstAttribute="top" secondItem="Du5-Th-wYi" secondAttribute="top" constant="42" id="vID-mj-x4M"/>
+                            <constraint firstItem="me9-Rd-jLH" firstAttribute="width" secondItem="BL3-xE-6pb" secondAttribute="width" id="5I4-fC-pKZ"/>
+                            <constraint firstItem="Du5-Th-wYi" firstAttribute="trailing" secondItem="BL3-xE-6pb" secondAttribute="trailing" id="B0T-7P-bd5"/>
+                            <constraint firstItem="me9-Rd-jLH" firstAttribute="top" secondItem="BL3-xE-6pb" secondAttribute="top" id="DtM-RQ-79a"/>
+                            <constraint firstItem="me9-Rd-jLH" firstAttribute="leading" secondItem="BL3-xE-6pb" secondAttribute="leading" id="IC7-6L-qqH"/>
+                            <constraint firstAttribute="bottom" secondItem="BL3-xE-6pb" secondAttribute="bottom" id="L7h-Vj-gJo"/>
+                            <constraint firstItem="me9-Rd-jLH" firstAttribute="height" secondItem="BL3-xE-6pb" secondAttribute="height" id="S65-XX-k9E"/>
+                            <constraint firstItem="BL3-xE-6pb" firstAttribute="top" secondItem="Dq2-Lt-FjU" secondAttribute="top" id="m21-kb-gQs"/>
+                            <constraint firstItem="BL3-xE-6pb" firstAttribute="leading" secondItem="Du5-Th-wYi" secondAttribute="leading" id="yW9-LA-U2V"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Du5-Th-wYi"/>
                     </view>
+                    <connections>
+                        <outlet property="controlView" destination="me9-Rd-jLH" id="PLR-7g-let"/>
+                        <outlet property="playButton" destination="0yq-8r-Z53" id="bb3-aB-Dkr"/>
+                        <outlet property="playerView" destination="BL3-xE-6pb" id="xqb-mH-qT3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Du-VI-KnT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1.4778325123152709" y="2.3999999999999999"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause.fill" catalog="system" width="116" height="128"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
