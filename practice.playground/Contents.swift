@@ -1,13 +1,19 @@
 import UIKit
-
-func solution(_ n:Int) -> String {
-    var a = "수박"
-    for i in 0...n/2 {
-        a = a + a
-    }
-    return String(Array(a)[0..<n])
+func solution(_ s:String) -> Int {
+     return Int(s) ?? 0
+ 
 }
-print(solution(50))
+solution("asdf")
+
+//
+//func solution(_ n:Int) -> String {
+//    var a = "수박"
+//    for i in 0...n/2 {
+//        a = a + a
+//    }
+//    return String(Array(a)[0..<n])
+//}
+//print(solution(50))
 //func solution1(_ n: Int) -> Int {
 //    var result = 0
 //    var array = Array.init(repeating: false, count: n+1)
