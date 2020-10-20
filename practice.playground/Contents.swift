@@ -1,31 +1,48 @@
 import UIKit
 
+//프로그래머스 약수의 합
+func solution(_ n:Int) -> Int {
+   var result = Set<Int>()
+    for i in 1...n/2 {
+        if n % i == 0 {
+            result.insert(i)
+            if i != n/i {
+                result.insert(n/i)
+            }
+        }
+    }
+    return result.reduce(0,+)
+}
+solution(12)
+
+
+
 
 // 프로그래머스 시저 암호
-func solution(_ s:String, _ n:Int) -> String {
-    let lower = Array("abcdefghijklmnopqrstuvwxyz")
-    let upper = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    var arr = Array(s)
-    
-for i in 0..<arr.count {
-    if lower.contains(arr[i]) {
-        let index = (lower.firstIndex(of: arr[i])!+n)%26
-        arr[i] = lower[index]
-    } else if upper.contains(arr[i]) {
-        let index = (upper.firstIndex(of: arr[i])!+n)%26
-        arr[i] = upper[index]
-    }
-}
-    return String(arr)
-}
-func solution(_ s:String, _ n:Int) -> String {
-    let alphabets = "abcdefghijklmnopqrstuvwxyz".map { $0 }
-    return String(s.map {
-        guard let index = alphabets.firstIndex(of: Character($0.lowercased())) else { return $0 }
-        let letter = alphabets[(index + n) % alphabets.count]
-        return $0.isUppercase ? Character(letter.uppercased()) : letter
-    })
-}
+//func solution(_ s:String, _ n:Int) -> String {
+//    let lower = Array("abcdefghijklmnopqrstuvwxyz")
+//    let upper = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+//    var arr = Array(s)
+//
+//for i in 0..<arr.count {
+//    if lower.contains(arr[i]) {
+//        let index = (lower.firstIndex(of: arr[i])!+n)%26
+//        arr[i] = lower[index]
+//    } else if upper.contains(arr[i]) {
+//        let index = (upper.firstIndex(of: arr[i])!+n)%26
+//        arr[i] = upper[index]
+//    }
+//}
+//    return String(arr)
+//}
+//func solution(_ s:String, _ n:Int) -> String {
+//    let alphabets = "abcdefghijklmnopqrstuvwxyz".map { $0 }
+//    return String(s.map {
+//        guard let index = alphabets.firstIndex(of: Character($0.lowercased())) else { return $0 }
+//        let letter = alphabets[(index + n) % alphabets.count]
+//        return $0.isUppercase ? Character(letter.uppercased()) : letter
+//    })
+//}
 
 
 
