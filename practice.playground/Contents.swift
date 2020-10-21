@@ -1,19 +1,41 @@
 import UIKit
 
-//프로그래머스 약수의 합
-func solution(_ n:Int) -> Int {
-   var result = Set<Int>()
-    for i in 1...n/2 {
-        if n % i == 0 {
-            result.insert(i)
-            if i != n/i {
-                result.insert(n/i)
-            }
+
+//프로그래머스 이상한 문자 만들기
+func solution(_ s:String) -> String {
+var index = 0
+let str = s.map { (str: Character) -> String in
+        var result = ""
+        if str != " " {
+            if index % 2 == 0 {
+            result = result + str.uppercased()
+        } else {
+            result = result + str.lowercased()
         }
+            index += 1
+        }else {
+            index = 0
+            result = result + " "
+        }
+        return result
     }
-    return result.reduce(0,+)
+    return str.joined()
 }
-solution(12)
+
+//프로그래머스 약수의 합
+//func solution(_ n:Int) -> Int {
+//   var result = Set<Int>()
+//    for i in 1...n/2 {
+//        if n % i == 0 {
+//            result.insert(i)
+//            if i != n/i {
+//                result.insert(n/i)
+//            }
+//        }
+//    }
+//    return result.reduce(0,+)
+//}
+//solution(12)
 
 
 
