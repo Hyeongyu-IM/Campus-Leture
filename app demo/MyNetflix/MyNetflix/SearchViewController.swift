@@ -9,8 +9,11 @@
 import UIKit
 import Kingfisher
 import AVFoundation
+import Firebase
 
 class SearchViewController: UIViewController {
+    // 파이어 베이스 활용
+    let db = Database.database().reference().child("searchHistory")
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
@@ -125,6 +128,15 @@ extension SearchViewController: UISearchBarDelegate {
                 // 이 아래코드는 UI쪽 main thred에 넘겨주어야 하는 부분인데 백그라운드 부분에서 불려서 오류가 나기때문에
                 // DispatchQueue.main을 사용해 메인으로 넘겨주었다.
                 self.resultCollectionView.reloadData()
+                
+                
+                // 파이어베이스 활용
+                // 서버에 검색 히스토리 추가
+                // 타임스탬프 형성 방법 // 출력형태가 1353251235.123452345 이렇게 되기때문에 소수점 아래로 짜를려고 rounded()
+                let timestamp: Double = Date().timeIntervalSince1970.rounded()
+                // 검색한 검색값이 올라갑니다.
+                // childByAutoId()는 고유 아이디를 자동으로 생성해 줍니다.
+                self.db.childByAutoId().setValue(["term": searchTerm, "timestamp": timestamp])
             }
             
             
