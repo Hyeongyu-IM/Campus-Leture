@@ -1,26 +1,28 @@
 import UIKit
+let num = 123
+var arr = String(num).map { String($0) }.reduce(0){ $0 + Int($1)! }
 
-
+arr
 //프로그래머스 이상한 문자 만들기
-func solution(_ s:String) -> String {
-var index = 0
-let str = s.map { (str: Character) -> String in
-        var result = ""
-        if str != " " {
-            if index % 2 == 0 {
-            result = result + str.uppercased()
-        } else {
-            result = result + str.lowercased()
-        }
-            index += 1
-        }else {
-            index = 0
-            result = result + " "
-        }
-        return result
-    }
-    return str.joined()
-}
+//func solution(_ s:String) -> String {
+//var index = 0
+//let str = s.map { (str: Character) -> String in
+//        var result = ""
+//        if str != " " {
+//            if index % 2 == 0 {
+//            result = result + str.uppercased()
+//        } else {
+//            result = result + str.lowercased()
+//        }
+//            index += 1
+//        }else {
+//            index = 0
+//            result = result + " "
+//        }
+//        return result
+//    }
+//    return str.joined()
+//}
 
 //프로그래머스 약수의 합
 //func solution(_ n:Int) -> Int {
