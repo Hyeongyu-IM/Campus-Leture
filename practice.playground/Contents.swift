@@ -1,19 +1,20 @@
 import UIKit
+let num = 124
+let arr = String(["1","2","3"])
 
 
 
-func solution(_ n:Int64) -> [Int] {
-    let arr = String(n).map { String($0) }
-    var result = [Int]()
-    for i in stride(from: arr.count-1, to: -1, by: -1) {
-     result.append(Int(arr[i])!)
-    }
-    return result
-}
+ //프로그래머스 정수 반대로 배열출력하기
+//func solution(_ n:Int64) -> [Int] {
+//    let arr = String(n).map { String($0) }
+//    var result = [Int]()
+//    for i in stride(from: arr.count-1, to: -1, by: -1) {
+//     result.append(Int(arr[i])!)
+//    }
+//    return result
+//}
 
-
-
-//프로그래머스 이상한 문자 만들기
+//프로그래머스 이상한 문자  만들기
 //func solution(_ s:String) -> String {
 //var index = 0
 //let str = s.map { (str: Character) -> String in
