@@ -1,6 +1,7 @@
 import UIKit
-let num = 124
-let arr = String(["1","2","3"])
+
+let num = 123
+let str = num*num
 
 
 
