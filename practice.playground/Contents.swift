@@ -1,9 +1,20 @@
 import UIKit
 
-let num = 123
-let str = num*num
+//// 정수 제곱근 판별
+func solution(_ n:Int64) -> Int64 {
+    let x = Int64(sqrt(Double(n)))
+    return (x * x == n) ? ((x + 1) * (x + 1)) : -1
+}
 
-
+//func solution(_ n:Int64) -> Int64 {
+//    let x: Int = 1
+//    while x*x == n {
+//        if x*x == n {
+//            return Int64((x+1)*(x+1))
+//        }
+//    }
+//    return -1
+//}
 
  //프로그래머스 정수 반대로 배열출력하기
 //func solution(_ n:Int64) -> [Int] {
