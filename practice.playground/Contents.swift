@@ -1,10 +1,22 @@
 import UIKit
 
-//// 정수 제곱근 판별
-func solution(_ n:Int64) -> Int64 {
-    let x = Int64(sqrt(Double(n)))
-    return (x * x == n) ? ((x + 1) * (x + 1)) : -1
+// 제일 작은 수 제거하기
+func solution(_ arr:[Int]) -> [Int] {
+    var arr = arr
+   if arr.count <= 1 {
+       return [-1]
+   } else{
+   let smaller = arr.sorted()[0]
+    arr.remove(at: arr.firstIndex(of: smaller)!)
+    return arr
+   }
 }
+
+//// 정수 제곱근 판별
+//func solution(_ n:Int64) -> Int64 {
+//    let x = Int64(sqrt(Double(n)))
+//    return (x * x == n) ? ((x + 1) * (x + 1)) : -1
+//}
 
 //func solution(_ n:Int64) -> Int64 {
 //    let x: Int = 1
