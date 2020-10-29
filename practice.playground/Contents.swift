@@ -1,16 +1,64 @@
 import UIKit
 
-// 제일 작은 수 제거하기
-func solution(_ arr:[Int]) -> [Int] {
-    var arr = arr
-   if arr.count <= 1 {
-       return [-1]
-   } else{
-   let smaller = arr.sorted()[0]
-    arr.remove(at: arr.firstIndex(of: smaller)!)
-    return arr
-   }
+func solution(_ numbers:[Int], _ hand:String) -> String {
+    let mapArray:[(Int, Int)] = [(3, 1),(0, 0),(0, 1),(0, 2)
+                                 ,(1, 0),(1, 1),(1, 2),(2, 0),
+                                 (2, 1),(2, 2),(3, 0),(3, 2)]
+    func index (current: (Int, Int), point: (Int, Int)) -> Int {
+        return abs(abs(current.0 - point.0) + abs(current.1 - point.1))
+    }
+   
+    var lefthand = mapArray[10]
+    var righthand = mapArray[11]
+    var result = ""
+
+    for num in numbers {
+        if num == 1 || num == 4 || num == 7 {
+            result += "L"
+            lefthand = mapArray[num]
+        } else if num == 3 || num == 6 || num == 9 {
+            result += "R"
+            righthand = mapArray[num]
+        } else if num == 2 || num == 5 || num == 8 || num == 0 {
+           let leftindex = index(current: lefthand, point: mapArray[num])
+           let rightindex = index(current: righthand, point: mapArray[num])
+            if hand == "right" {
+                if leftindex >= rightindex {
+                    result += "R"
+                    righthand = mapArray[num]
+                } else {
+                    result += "L"
+                    lefthand = mapArray[num]
+                }
+            } else {
+                if leftindex <= rightindex {
+                    result += "L"
+                    lefthand = mapArray[num]
+                } else {
+                    result += "R"
+                    righthand = mapArray[num]
+                }
+            }
+        }
+    }
+    return result
 }
+solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5],"right")
+
+
+//var num = [Int]()
+//num.append(1)
+//// 제일 작은 수 제거하기
+//func solution(_ arr:[Int]) -> [Int] {
+//    var arr = arr
+//   if arr.count <= 1 {
+//       return [-1]
+//   } else{
+//   let smaller = arr.sorted()[0]
+//    arr.remove(at: arr.firstIndex(of: smaller)!)
+//    return arr
+//   }
+//}
 
 //// 정수 제곱근 판별
 //func solution(_ n:Int64) -> Int64 {
