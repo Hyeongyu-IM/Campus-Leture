@@ -1,49 +1,73 @@
 import UIKit
 
-func solution(_ numbers:[Int], _ hand:String) -> String {
-    let mapArray:[(Int, Int)] = [(3, 1),(0, 0),(0, 1),(0, 2)
-                                 ,(1, 0),(1, 1),(1, 2),(2, 0),
-                                 (2, 1),(2, 2),(3, 0),(3, 2)]
-    func index (current: (Int, Int), point: (Int, Int)) -> Int {
-        return abs(abs(current.0 - point.0) + abs(current.1 - point.1))
-    }
-   
-    var lefthand = mapArray[10]
-    var righthand = mapArray[11]
-    var result = ""
-
-    for num in numbers {
-        if num == 1 || num == 4 || num == 7 {
-            result += "L"
-            lefthand = mapArray[num]
-        } else if num == 3 || num == 6 || num == 9 {
-            result += "R"
-            righthand = mapArray[num]
-        } else if num == 2 || num == 5 || num == 8 || num == 0 {
-           let leftindex = index(current: lefthand, point: mapArray[num])
-           let rightindex = index(current: righthand, point: mapArray[num])
-            if hand == "right" {
-                if leftindex >= rightindex {
-                    result += "R"
-                    righthand = mapArray[num]
-                } else {
-                    result += "L"
-                    lefthand = mapArray[num]
-                }
-            } else {
-                if leftindex <= rightindex {
-                    result += "L"
-                    lefthand = mapArray[num]
-                } else {
-                    result += "R"
-                    righthand = mapArray[num]
-                }
-            }
-        }
-    }
-    return result
+func gcd(_ num: Int, _ num2: Int) -> Int {
+    let mod: Int = num % num2
+    return 0 == mod ? min(num, num2) : gcd(num2, mod)
 }
-solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5],"right")
+ 
+func lcm(_ a: Int, _ b: Int) -> Int {
+    return a * b / gcd(a, b)
+}
+ 
+func solution(_ n:Int, _ m:Int) -> [Int] {
+    return [gcd(n, m), lcm(n, m)]
+}
+var a = min(12, 16)
+
+
+//n    m    return
+//3    12    [3, 12]
+//2    5    [1, 10]
+// 어느 숫자가 큰지 판별
+// 서로 나누어지면 서로가 관계
+// 서로 안나누어 지면 최소 공배수 1, 두개 곱하면됨
+
+
+ // 프로그래머스 키패드 누르기
+//func solution(_ numbers:[Int], _ hand:String) -> String {
+//    let mapArray:[(Int, Int)] = [(3, 1),(0, 0),(0, 1),(0, 2)
+//                                 ,(1, 0),(1, 1),(1, 2),(2, 0),
+//                                 (2, 1),(2, 2),(3, 0),(3, 2)]
+//    func index (current: (Int, Int), point: (Int, Int)) -> Int {
+//        return abs(abs(current.0 - point.0) + abs(current.1 - point.1))
+//    }
+//
+//    var lefthand = mapArray[10]
+//    var righthand = mapArray[11]
+//    var result = ""
+//
+//    for num in numbers {
+//        if num == 1 || num == 4 || num == 7 {
+//            result += "L"
+//            lefthand = mapArray[num]
+//        } else if num == 3 || num == 6 || num == 9 {
+//            result += "R"
+//            righthand = mapArray[num]
+//        } else if num == 2 || num == 5 || num == 8 || num == 0 {
+//           let leftindex = index(current: lefthand, point: mapArray[num])
+//           let rightindex = index(current: righthand, point: mapArray[num])
+//            if hand == "right" {
+//                if leftindex >= rightindex {
+//                    result += "R"
+//                    righthand = mapArray[num]
+//                } else {
+//                    result += "L"
+//                    lefthand = mapArray[num]
+//                }
+//            } else {
+//                if leftindex <= rightindex {
+//                    result += "L"
+//                    lefthand = mapArray[num]
+//                } else {
+//                    result += "R"
+//                    righthand = mapArray[num]
+//                }
+//            }
+//        }
+//    }
+//    return result
+//}
+//solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5],"right")
 
 
 //var num = [Int]()
