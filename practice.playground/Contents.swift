@@ -1,18 +1,44 @@
 import UIKit
 
-func gcd(_ num: Int, _ num2: Int) -> Int {
-    let mod: Int = num % num2
-    return 0 == mod ? min(num, num2) : gcd(num2, mod)
+func solution(_ num:Int) -> Int {
+    var count = 0
+    var num = num
+    
+    for _ in 0..<500 {
+    // 500조건
+    if count > 499 {
+        return -1
+    // 1일때
+    } else if num == 1{
+        return count
+        // 진행중
+    } else {
+           if num % 2 == 0 {
+               num = num / 2
+               count += 1
+           } else {
+               num = num * 3 + 1
+               count += 1
+           }
+        }
+    }
+    return count
 }
- 
-func lcm(_ a: Int, _ b: Int) -> Int {
-    return a * b / gcd(a, b)
-}
- 
-func solution(_ n:Int, _ m:Int) -> [Int] {
-    return [gcd(n, m), lcm(n, m)]
-}
-var a = min(12, 16)
+solution(6)
+
+//func gcd(_ num: Int, _ num2: Int) -> Int {
+//    let mod: Int = num % num2
+//    return 0 == mod ? min(num, num2) : gcd(num2, mod)
+//}
+// 
+//func lcm(_ a: Int, _ b: Int) -> Int {
+//    return a * b / gcd(a, b)
+//}
+// 
+//func solution(_ n:Int, _ m:Int) -> [Int] {
+//    return [gcd(n, m), lcm(n, m)]
+//}
+//var a = min(12, 16)
 
 
 //n    m    return
