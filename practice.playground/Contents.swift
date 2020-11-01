@@ -1,30 +1,36 @@
 import UIKit
-
-func solution(_ num:Int) -> Int {
-    var count = 0
-    var num = num
-    
-    for _ in 0..<500 {
-    // 500조건
-    if count > 499 {
-        return -1
-    // 1일때
-    } else if num == 1{
-        return count
-        // 진행중
-    } else {
-           if num % 2 == 0 {
-               num = num / 2
-               count += 1
-           } else {
-               num = num * 3 + 1
-               count += 1
-           }
-        }
-    }
-    return count
+ // 프로그래머스 평균구하기
+func solution(_ arr:[Int]) -> Double {
+    return Double(arr.reduce (0, +)) / Double(arr.count)
 }
-solution(6)
+solution([1,2,3,4])
+
+
+        // 프로그래머스 콜린스 추측
+//func solution(_ num:Int) -> Int {
+//    var count = 0
+//    var num = num
+//
+//    for _ in 0..<500 {
+//    // 500조건
+//    if count > 499 {
+//        return -1
+//    // 1일때
+//    } else if num == 1{
+//        return count
+//        // 진행중
+//    } else {
+//           if num % 2 == 0 {
+//               num = num / 2
+//               count += 1
+//           } else {
+//               num = num * 3 + 1
+//               count += 1
+//           }
+//        }
+//    }
+//    return count
+//}
 
 //func gcd(_ num: Int, _ num2: Int) -> Int {
 //    let mod: Int = num % num2
