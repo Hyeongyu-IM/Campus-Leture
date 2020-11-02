@@ -1,10 +1,15 @@
 import UIKit
- // 프로그래머스 평균구하기
-func solution(_ arr:[Int]) -> Double {
-    return Double(arr.reduce (0, +)) / Double(arr.count)
-}
-solution([1,2,3,4])
 
+ // 하샤드 수
+func solution(_ x:Int) -> Bool {
+    return x % String(x).map{String($0)}.reduce(0){$0 + Int($1)!} == 0 ? true : false
+}
+
+
+// // 프로그래머스 평균구하기
+//func solution(_ arr:[Int]) -> Double {
+//    return Double(arr.reduce (0, +)) / Double(arr.count)
+//}
 
         // 프로그래머스 콜린스 추측
 //func solution(_ num:Int) -> Int {
