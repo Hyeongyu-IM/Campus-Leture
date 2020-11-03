@@ -1,9 +1,18 @@
 import UIKit
 
- // 하샤드 수
-func solution(_ x:Int) -> Bool {
-    return x % String(x).map{String($0)}.reduce(0){$0 + Int($1)!} == 0 ? true : false
+// 핸드폰 번호 가리기
+func solution(_ phone_number:String) -> String {
+    var num = phone_number.map {String($0)}
+for i in 0..<num.count - 4 {
+    num[i] = "*"
 }
+    return num.joined()
+}
+
+// // 하샤드 수
+//func solution(_ x:Int) -> Bool {
+//    return x % String(x).map{String($0)}.reduce(0){$0 + Int($1)!} == 0 ? true : false
+//}
 
 
 // // 프로그래머스 평균구하기
