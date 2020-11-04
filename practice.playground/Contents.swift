@@ -1,13 +1,46 @@
 import UIKit
 
-// 핸드폰 번호 가리기
-func solution(_ phone_number:String) -> String {
-    var num = phone_number.map {String($0)}
-for i in 0..<num.count - 4 {
-    num[i] = "*"
-}
-    return num.joined()
-}
+let sequence1 = ["1", "2", "3", "4"]
+let sequence2 = ["a", "b", "c", "d"]
+
+let sequenceZip = zip(sequence1, sequence2)
+
+for i in sequenceZip {
+     print(i)
+ }
+ 
+for (i, j) in sequenceZip {
+ print("번호입니다\(i) 알파벳입니다(j)")
+ 
+ }
+
+//// 행렬의 덧셈
+//func solution(_ arr1:[[Int]], _ arr2:[[Int]]) -> [[Int]] {
+//    var result1 = [Int]()
+//    var result2 = [[Int]]()
+//
+//    for i in 0...arr1.count - 1 {
+//        for q in 0...arr1[i].count - 1 {
+//            result1.append(arr1[i][q] + arr2[i][q])
+//            }
+//        result2.append(result1)
+//        result1.removeAll()
+//        }
+//    return result2
+//}
+//
+//func solution(_ arr1:[[Int]], _ arr2:[[Int]]) -> [[Int]] {
+//    return zip(arr1, arr2).map{zip($0,$1).map{$0+$1}}
+//}
+
+//// 핸드폰 번호 가리기
+//func solution(_ phone_number:String) -> String {
+//    var num = phone_number.map {String($0)}
+//for i in 0..<num.count - 4 {
+//    num[i] = "*"
+//}
+//    return num.joined()
+//}
 
 // // 하샤드 수
 //func solution(_ x:Int) -> Bool {
