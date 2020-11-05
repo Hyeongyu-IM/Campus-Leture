@@ -1,18 +1,31 @@
 import UIKit
 
-let sequence1 = ["1", "2", "3", "4"]
-let sequence2 = ["a", "b", "c", "d"]
+ // x만큼 간격이 있는 n개의 숫자
+//func solution(_ x:Int, _ n:Int) -> [Int64] {
+//    var result: [Int64] = []
+//    for index in 1...n {
+//        result.append(Int64(index * x))
+//    }
+//    return result
+//}
+//
+//func solution(_ x:Int, _ n:Int) -> [Int64] {
+//    return Array(1...n).map { Int64($0 * x) }
+//}
 
-let sequenceZip = zip(sequence1, sequence2)
-
-for i in sequenceZip {
-     print(i)
- }
- 
-for (i, j) in sequenceZip {
- print("번호입니다\(i) 알파벳입니다(j)")
- 
- }
+//let sequence1 = ["1", "2", "3", "4"]
+//let sequence2 = ["a", "b", "c", "d"]
+//
+//let sequenceZip = zip(sequence1, sequence2)
+//
+//for i in sequenceZip {
+//     print(i)
+// }
+//
+//for (i, j) in sequenceZip {
+// print("번호입니다\(i) 알파벳입니다(j)")
+//
+// }
 
 //// 행렬의 덧셈
 //func solution(_ arr1:[[Int]], _ arr2:[[Int]]) -> [[Int]] {
