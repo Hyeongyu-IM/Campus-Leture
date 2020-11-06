@@ -1,5 +1,17 @@
 import UIKit
 
+
+
+
+ // 프로그래머스 내적
+//func solution(_ a:[Int], _ b:[Int]) -> Int {
+//    var result = 0
+//    for i in 0..<a.count {
+//        result += a[i] * b[i]
+//    }
+//    return result
+//}
+
  // x만큼 간격이 있는 n개의 숫자
 //func solution(_ x:Int, _ n:Int) -> [Int64] {
 //    var result: [Int64] = []
@@ -12,10 +24,6 @@ import UIKit
 //func solution(_ x:Int, _ n:Int) -> [Int64] {
 //    return Array(1...n).map { Int64($0 * x) }
 //}
-
-//let sequence1 = ["1", "2", "3", "4"]
-//let sequence2 = ["a", "b", "c", "d"]
-//
 //let sequenceZip = zip(sequence1, sequence2)
 //
 //for i in sequenceZip {
