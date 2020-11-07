@@ -1,6 +1,11 @@
 import UIKit
 
-
+ // 프로그래머스 직사각형 별찍기
+let n = readLine()!.components(separatedBy: [" "]).map { Int($0)! }
+let (a, b) = (n[0], n[1])
+var star = String(repeating:"*", count: a)
+var space = String(repeating:"\(star)\n", count: b)
+print(space)
 
 
  // 프로그래머스 내적
