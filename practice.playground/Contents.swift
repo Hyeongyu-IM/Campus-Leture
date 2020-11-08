@@ -1,11 +1,27 @@
 import UIKit
+// 프로그래머스 예산
+func solution(_ d:[Int], _ budget:Int) -> Int {
+    var bud = budget
+    let arrayd = d.sorted()
+    var count = 0
+    for i in arrayd {
+        if bud >= i {
+            bud -= i
+            count += 1
+        }
+    }
+    return count
+}
 
- // 프로그래머스 직사각형 별찍기
-let n = readLine()!.components(separatedBy: [" "]).map { Int($0)! }
-let (a, b) = (n[0], n[1])
-var star = String(repeating:"*", count: a)
-var space = String(repeating:"\(star)\n", count: b)
-print(space)
+
+
+
+// // 프로그래머스 직사각형 별찍기
+//let n = readLine()!.components(separatedBy: [" "]).map { Int($0)! }
+//let (a, b) = (n[0], n[1])
+//var star = String(repeating:"*", count: a)
+//var space = String(repeating:"\(star)\n", count: b)
+//print(space)
 
 
  // 프로그래머스 내적
