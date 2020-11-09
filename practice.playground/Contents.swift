@@ -1,20 +1,57 @@
 import UIKit
-// 프로그래머스 예산
-func solution(_ d:[Int], _ budget:Int) -> Int {
-    var bud = budget
-    let arrayd = d.sorted()
-    var count = 0
-    for i in arrayd {
-        if bud >= i {
-            bud -= i
-            count += 1
-        }
+
+let arr1  =  [9, 20, 28, 18, 11]
+let arr2  =  [30, 1, 21, 17, 28]
+
+for i in 0..<5 {
+    print("arr1입니다 \(String(arr1[i], radix: 2))")
+    print("arr2입니다 \(String(arr2[i], radix: 2))")
+        var bitwise = String(arr1[i] | arr2[i], radix: 2)
+    print(bitwise)
     }
-    return count
+
+  // 비밀지도
+func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
+    var answer: [String] = []
+    var result = ""
+    for i in 0..<arr1.count {
+        let c = String(arr1[i] | arr2[i], radix: 2)
+        for q in c {
+           if q == "1" {
+               result += "#"
+           } else {
+               result += " "
+           }
+        }
+        if result.count < n {
+            for _ in 0 ... n - result.count - 1 {
+                result = " \(result)"
+            }
+        }
+        answer.append(result)
+        result = ""
+    }
+    return answer
 }
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
 
 
 
+
+
+// 프로그래머스 예산
+//func solution(_ d:[Int], _ budget:Int) -> Int {
+//    var bud = budget
+//    let arrayd = d.sorted()
+//    var count = 0
+//    for i in arrayd {
+//        if bud >= i {
+//            bud -= i
+//            count += 1
+//        }
+//    }
+//    return count
+//}
 
 // // 프로그래머스 직사각형 별찍기
 //let n = readLine()!.components(separatedBy: [" "]).map { Int($0)! }
