@@ -1,43 +1,65 @@
 import UIKit
 
-let arr1  =  [9, 20, 28, 18, 11]
-let arr2  =  [30, 1, 21, 17, 28]
+//실패율
+func solution(_ N:Int, _ stages:[Int]) -> [(Int)] {
+    var countPerson = [(Int, Int)]()
+    var get = [(Int, Double)]()
+    var stageCount = stages.count
+    var result = [Int]()
 
-for i in 0..<5 {
-    print("arr1입니다 \(String(arr1[i], radix: 2))")
-    print("arr2입니다 \(String(arr2[i], radix: 2))")
-        var bitwise = String(arr1[i] | arr2[i], radix: 2)
-    print(bitwise)
+    for i in 1...N{
+        let result: Int = stages.filter { $0 == i }.count
+        countPerson.append((i, result))
     }
+    // countPerson 예시 [(1, 1), (2, 3), (3, 2), (4, 1), (5, 0)]
 
-  // 비밀지도
-func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
-    var answer: [String] = []
-    var result = ""
-    for i in 0..<arr1.count {
-        let c = String(arr1[i] | arr2[i], radix: 2)
-        for q in c {
-           if q == "1" {
-               result += "#"
-           } else {
-               result += " "
+    for i in 0..<countPerson.count {
+        if stageCount != 0 {
+        var sum: Double = Double(countPerson[i].1) / Double(stageCount)
+        stageCount -= countPerson[i].1
+        get.append((countPerson[i].0, sum))
+        } else {
+            get.append((countPerson[i].0, 0))
+        }
+    }
+    //get예시 [(1, 0.125), (2, 0.42857142857142855), (3, 0.5), (4, 0.5), (5, 0.0)]
+
+   get.sorted{
+          if $0.1 == $1.1 {
+              return $0.0 < $1.0
+           }else {
+              return $0.1 > $1.1
            }
-        }
-        if result.count < n {
-            for _ in 0 ... n - result.count - 1 {
-                result = " \(result)"
-            }
-        }
-        answer.append(result)
-        result = ""
-    }
-    return answer
+    }.map { result.append($0.0)}
+    return result //[3, 4, 2, 1, 5]
 }
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
+solution(5, [2,1,2,6,2,4,3,3])
 
 
 
-
+//  // 비밀지도
+//func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
+//    var answer: [String] = []
+//    var result = ""
+//    for i in 0..<arr1.count {
+//        let c = String(arr1[i] | arr2[i], radix: 2)
+//        for q in c {
+//           if q == "1" {
+//               result += "#"
+//           } else {
+//               result += " "
+//           }
+//        }
+//        if result.count < n {
+//            for _ in 0 ... n - result.count - 1 {
+//                result = " \(result)"
+//            }
+//        }
+//        answer.append(result)
+//        result = ""
+//    }
+//    return answer
+//}
 
 // 프로그래머스 예산
 //func solution(_ d:[Int], _ budget:Int) -> Int {
