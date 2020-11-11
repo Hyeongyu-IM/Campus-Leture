@@ -1,41 +1,58 @@
 import UIKit
 
-//실패율
-func solution(_ N:Int, _ stages:[Int]) -> [(Int)] {
-    var countPerson = [(Int, Int)]()
-    var get = [(Int, Double)]()
-    var stageCount = stages.count
-    var result = [Int]()
-
-    for i in 1...N{
-        let result: Int = stages.filter { $0 == i }.count
-        countPerson.append((i, result))
-    }
-    // countPerson 예시 [(1, 1), (2, 3), (3, 2), (4, 1), (5, 0)]
-
-    for i in 0..<countPerson.count {
-        if stageCount != 0 {
-        var sum: Double = Double(countPerson[i].1) / Double(stageCount)
-        stageCount -= countPerson[i].1
-        get.append((countPerson[i].0, sum))
-        } else {
-            get.append((countPerson[i].0, 0))
-        }
-    }
-    //get예시 [(1, 0.125), (2, 0.42857142857142855), (3, 0.5), (4, 0.5), (5, 0.0)]
-
-   get.sorted{
-          if $0.1 == $1.1 {
-              return $0.0 < $1.0
-           }else {
-              return $0.1 > $1.1
-           }
-    }.map { result.append($0.0)}
-    return result //[3, 4, 2, 1, 5]
+//var a = pow(2, 3)
+//var c = pow(4,2)
+//var b = a + c
+// 음... 문자열을 순환하면서 숫자가 나오게되면 다른 배열에 넣는 작업을 하면 될것 같은데....
+// 만들어진 배열 3개를 조합하는 형식으로
+// 먼저 숫자를 정수가 나오면 다른 배열에 할당하기
+// 나누어진 배열을 조건에 맞추어 나누기
+var a = "1S2D*3T"
+var d = ""
+var b = a.map {String($0)}
+if let c = Int(b[1]) {
+    print(c)
 }
-solution(5, [2,1,2,6,2,4,3,3])
+d
+
+  // 다트 게임
 
 
+
+//실패율
+//func solution(_ N:Int, _ stages:[Int]) -> [(Int)] {
+//    var countPerson = [(Int, Int)]()
+//    var get = [(Int, Double)]()
+//    var stageCount = stages.count
+//    var result = [Int]()
+//
+//    for i in 1...N{
+//        let result: Int = stages.filter { $0 == i }.count
+//        countPerson.append((i, result))
+//    }
+//    // countPerson 예시 [(1, 1), (2, 3), (3, 2), (4, 1), (5, 0)]
+//
+//    for i in 0..<countPerson.count {
+//        if stageCount != 0 {
+//        var sum: Double = Double(countPerson[i].1) / Double(stageCount)
+//        stageCount -= countPerson[i].1
+//        get.append((countPerson[i].0, sum))
+//        } else {
+//            get.append((countPerson[i].0, 0))
+//        }
+//    }
+//    //get예시 [(1, 0.125), (2, 0.42857142857142855), (3, 0.5), (4, 0.5), (5, 0.0)]
+//
+//   get.sorted{
+//          if $0.1 == $1.1 {
+//              return $0.0 < $1.0
+//           }else {
+//              return $0.1 > $1.1
+//           }
+//    }.map { result.append($0.0)}
+//    return result //[3, 4, 2, 1, 5]
+//}
+//solution(5, [2,1,2,6,2,4,3,3])
 
 //  // 비밀지도
 //func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
