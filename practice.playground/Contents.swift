@@ -1,22 +1,54 @@
 import UIKit
 
-//var a = pow(2, 3)
-//var c = pow(4,2)
-//var b = a + c
-// 음... 문자열을 순환하면서 숫자가 나오게되면 다른 배열에 넣는 작업을 하면 될것 같은데....
-// 만들어진 배열 3개를 조합하는 형식으로
-// 먼저 숫자를 정수가 나오면 다른 배열에 할당하기
-// 나누어진 배열을 조건에 맞추어 나누기
-var a = "1S2D*3T"
-var d = ""
-var b = a.map {String($0)}
-if let c = Int(b[1]) {
-    print(c)
+func solution(_ numbers:[Int]) -> [Int] {
+    var a = Set<Int>()
+    for i in 0..<numbers.count {
+        for q in i + 1..<numbers.count {
+            let sum = numbers[i] + numbers[q]
+            a.insert(sum)
+        }
+    }
+  let result = a.map { $0 }
+    return result.sorted()
 }
-d
+solution([2,1,3,4,1])
 
   // 다트 게임
-
+// 조건이 많을 때 좋은것은 스위치문을 활용하는 것.
+//func solution(_ dartResult:String) -> Int {
+//    var resultArray = [Int](repeating: 0, count: 3)
+//    var beforechar: Character = " "
+//    var index = -1
+//
+//    for char in dartResult {
+//        switch char {
+//        case "0"..."9":
+//            if  beforechar == "1" {
+//                resultArray[index] = 10
+//            } else {
+//                index += 1
+//                resultArray[index] + Int(String(char))!
+//            }
+//        case "D":
+//            resultArray[index] * resultArray[index]
+//        case "T":
+//            resultArray[index] * resultArray[index] * resultArray[index]
+//        case "#":
+//            -resultArray[index]
+//        case "*":
+//            if index > 1 {
+//                resultArray[index] * 2
+//            } else {
+//                resultArray[index] * 2
+//                resultArray[index - 1] * 2
+//            }
+//        default:
+//            break
+//        }
+//        beforechar = char
+//    }
+//    return resultArray.reduce(0, +)
+//}
 
 
 //실패율
