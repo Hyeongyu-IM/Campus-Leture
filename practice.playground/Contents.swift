@@ -1,17 +1,19 @@
 import UIKit
 
-func solution(_ numbers:[Int]) -> [Int] {
-    var a = Set<Int>()
-    for i in 0..<numbers.count {
-        for q in i + 1..<numbers.count {
-            let sum = numbers[i] + numbers[q]
-            a.insert(sum)
-        }
-    }
-  let result = a.map { $0 }
-    return result.sorted()
-}
-solution([2,1,3,4,1])
+
+ // 레벨 1 다시 리뷰
+//func solution(_ numbers:[Int]) -> [Int] {
+//    var a = Set<Int>()
+//    for i in 0..<numbers.count {
+//        for q in i + 1..<numbers.count {
+//            let sum = numbers[i] + numbers[q]
+//            a.insert(sum)
+//        }
+//    }
+//  let result = a.map { $0 }
+//    return result.sorted()
+//}
+//solution([2,1,3,4,1])
 
   // 다트 게임
 // 조건이 많을 때 좋은것은 스위치문을 활용하는 것.
