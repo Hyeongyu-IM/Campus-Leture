@@ -1,5 +1,6 @@
 import UIKit
 
+//func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] { return commands.map{ let i = $0[0]-1; let j = $0[1]-1; let k = $0[2]-1 return array[i...j].sorted()[k] } }
 
  // 레벨 1 다시 리뷰
 //func solution(_ numbers:[Int]) -> [Int] {
