@@ -1,5 +1,46 @@
 import UIKit
 
+class Dynamic<T> {
+    typealias Listener = (T) -> Void
+    var listener: Listener?
+    
+    func bind(_ listener: Listener?) {
+        self.listener = listener
+    }
+    
+    func bindAndFire(_ listener: Listener?) {
+        self.listener = listener
+        listener?(value)
+    }
+    
+    var value: T {
+        didSet {
+            listener?(value)
+        }
+    }
+    
+    init(_ v: T) {
+        value = v
+    }
+}
+var asdf = "asdf"
+var helloText = Dynamic("")
+helloText.bindAndFire { (helloText) in
+    asdf = helloText
+}
+helloText.value = "aaaaaaaaa"
+print(asdf)
+helloText.bindAndFire { value in print(value) }
+
+
+
+
+
+
+//let strings = ["asdff"]
+//let n = 1
+//let index = strings[0].index(strings[0].startIndex, offsetBy: n)
+//print(strings[0][index])
 //func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] { return commands.map{ let i = $0[0]-1; let j = $0[1]-1; let k = $0[2]-1 return array[i...j].sorted()[k] } }
 
  // 레벨 1 다시 리뷰
