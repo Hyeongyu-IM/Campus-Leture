@@ -1,5 +1,7 @@
 import UIKit
 
+NSTextAlignment
+
 class Dynamic<T> {
     typealias Listener = (T) -> Void
     var listener: Listener?
