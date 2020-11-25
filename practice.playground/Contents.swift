@@ -1,7 +1,8 @@
 import UIKit
 
-NSTextAlignment
 
+// 특정 값을 바인드하는 클래스를 생성할때 사용
+//NSTextAlignment
 class Dynamic<T> {
     typealias Listener = (T) -> Void
     var listener: Listener?
