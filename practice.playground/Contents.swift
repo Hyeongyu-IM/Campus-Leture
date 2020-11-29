@@ -1,39 +1,185 @@
 import UIKit
 
+//가장 큰 전제 조건 = 다리위에 하중이 넘어가면 안된다.
+// 알아내려는 결과  = 총 걸리는 시간초
+// 간단하게 생각하면 다리의 길이만큼 배열을 만들고 다리위의 배열이 아무것도 없으면 트럭을 보내는 방법이다
+func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+    var trucks = truck_weights
+    var bridge = Array(repeating: 0, count: bridge_length)
+    var sec = 0
+    var w = 0
+
+    while !bridge.isEmpty {
+        // 1초마다 다리위의 트럭 또는 빈공간은 움직임
+        w -= bridge.removeFirst()
+        sec += 1
+
+        // 다리에 진입 예정인 트럭을 포함한 무게와 다리가 견딜 수 있는 무게를 비교해서
+        // 견딜 수 있으면 트럭 진입 시킨다.
+        if let t = trucks.first {
+            if t + w <= weight {
+                w += trucks.removeFirst() // 트럭 진입
+                bridge.append(t) // 트럭 진입 완료
+            } else {
+                // 견딜 수 없으면 트럭 대기하고 빈공간만 보낸다.
+                bridge.append(0)
+            }
+        }
+    }
+    return sec
+}
+//func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+//
+//    var bridge = Array(repeating: 0, count: bridge_length)
+//    var trucks = truck_weights
+//    var sec = 0
+//    var bridgeWeight = 0
+//
+//    //다리의 빈공간만큼 배열을 만들고 와일이 실행될때마다 트럭의 배열을 삭제한다.
+//    while !bridge.isEmpty {
+//        // 다리는 1초만큼씩 이동한다.
+//        sec += 1
+//        // 다리는 1초만큼씩 이동하니까 제일 앞의 배열을 삭제한다.(무게)
+//        bridgeWeight -= bridge.removeFirst()
+//
+//        // 이제 다리에 진입할 트럭을 무게와 비교해서 안넘으면 추가해야하는데 올라갈 트럭이 있을때만 계산해야 하니까 옵셔널체이닝을 써준다.
+//        if let t = trucks.first {
+//            // 넘을경우 빈공간 (넘어갈 트럭이 대기중입니다)
+//            if t + bridgeWeight <= weight {
+//                bridge.append(0)
+//            } else {
+//                // 안넘을경우 트럭을 보내줍니다. 무게를 추가.
+//                bridgeWeight += trucks.removeFirst()
+//                bridge.append(t)
+//            }
+//        }
+//    }
+//    return sec
+//}
+solution(5, 5, [2,2,2,2,1,1,1,1,1])
+
+
+
+
+
+//// 일단 이거는 ... 조건은 대부분 갖추었지만 트럭이올라가있는 시간을 고려하지 않아서 실패 ㅜㅜ
+//func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+//    // 트럭은 순서대로 들어옵니다 따라서 트럭의 개수만큼 원래 시간에서 +
+//    // 무게가 같아도 되지만 넘지는 않게 넘으면 길이를 기다려야함.
+//    // 조건식 임시로 다리위의 트럭을 담을 배열 선언 ( 무게 재기 )
+//    // 만약 무게가 상한선을 초과한다면 트럭한개 = 다리의 길이 -> 마지막이라면 다리의 길이 + 1
+//    // 무게를 담을 변수
+//    // 반복문으로 하나씩 넣고
+//    // 건너는 트럭이 다음트럭과 합쳤을때 무게가 넘는다면. 다리의 길이 +
+//    // 건너는 트럭이 다음트럭과 합쳤을때 무게가 안넘는다면. 초 + 1
+//    var sec = 0
+//    var first = 0
+//
+//    // 모든 트럭을 더했을때 무게가 넘지않으면.
+//    if truck_weights.reduce (0, +) <= weight {
+//        return bridge_length + truck_weights.count
+//    }
+//
+//    for i in 0..<truck_weights.count {
+//        if i == truck_weights.count - 1 {
+//            // 마지막 트럭이 앞선 트럭과 합쳤을때 무게가 높다면
+//            print("마지막입니다")
+//            if first + truck_weights[i] >= weight {
+//                sec = sec + bridge_length - 1 + bridge_length + 1
+//                print(sec)
+//                // 마지막 트럭이 앞선 트럭과 합쳣을때 무게가 낮다면
+//            } else {
+//                sec = sec + bridge_length + 1
+//                print(sec)
+//            }
+//        } else {
+//            if truck_weights[i] + first <= weight {
+//                sec = sec + 1
+//                first = truck_weights[i]
+//                print(sec)
+//            } else {
+//                sec = sec + bridge_length
+//                first =  truck_weights[i]
+//                print(sec)
+//            }
+//        }
+//
+//    }
+//    return sec
+//}
+//solution(5, 5, [2,2,2,2,1,1,1,1,1])
+
+
+//func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
+//    var realLost = lost.sorted()
+//    var realReserve = reserve.sorted()
+//    var count = 0
+//
+//    for i in 0..<realLost.count {
+//        for q in 0..<realReserve.count {
+//            if realLost[i] == realReserve[q] {
+//                realLost[i] = 0
+//                realReserve[q] = 0
+//                count += 1
+//                break
+//            }
+//        }
+//    }
+//
+//    //var losted = lost.filter{!reserve.contains($0)}
+//    //var reserved = reserve.filter{!lost.contains($0)}
+//
+//    for num in 0..<realLost.count {
+//        for cloth in 0..<realReserve.count {
+//            if realReserve[cloth] == 0 || realLost[num] == 0 {
+//                continue
+//            } else if realLost[num]-1 == realReserve[cloth] ||
+//                        realLost[num]+1 == realReserve[cloth] {
+//                realReserve[cloth] = 0
+//                count += 1
+//                break
+//            }
+//        }
+//    }
+//
+//    return n - lost.count + count
+//
+//}
+//solution(5 ,[2, 4], [1, 3, 5] )
 
 // 특정 값을 바인드하는 클래스를 생성할때 사용
 //NSTextAlignment
-class Dynamic<T> {
-    typealias Listener = (T) -> Void
-    var listener: Listener?
-    
-    func bind(_ listener: Listener?) {
-        self.listener = listener
-    }
-    
-    func bindAndFire(_ listener: Listener?) {
-        self.listener = listener
-        listener?(value)
-    }
-    
-    var value: T {
-        didSet {
-            listener?(value)
-        }
-    }
-    
-    init(_ v: T) {
-        value = v
-    }
-}
-var asdf = "asdf"
-var helloText = Dynamic("")
-helloText.bindAndFire { (helloText) in
-    asdf = helloText
-}
-helloText.value = "aaaaaaaaa"
-print(asdf)
-helloText.bindAndFire { value in print(value) }
+//class Dynamic<T> {
+//    typealias Listener = (T) -> Void
+//    var listener: Listener?
+//
+//    func bind(_ listener: Listener?) {
+//        self.listener = listener
+//    }
+//
+//    func bindAndFire(_ listener: Listener?) {
+//        self.listener = listener
+//        listener?(value)
+//    }
+//
+//    var value: T {
+//        didSet {
+//            listener?(value)
+//        }
+//    }
+//
+//    init(_ v: T) {
+//        value = v
+//    }
+//}
+//var asdf = "asdf"
+//var helloText = Dynamic("")
+//helloText.bindAndFire { (helloText) in
+//    asdf = helloText
+//}
+//helloText.value = "aaaaaaaaa"
+//print(asdf)
+//helloText.bindAndFire { value in print(value) }
 
 
 
