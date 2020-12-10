@@ -1,61 +1,35 @@
 import UIKit
 
-//가장 큰 전제 조건 = 다리위에 하중이 넘어가면 안된다.
+//가장 큰 전제 조건 = 다리위에 하중이 넘어가면 안됩니다
 // 알아내려는 결과  = 총 걸리는 시간초
 // 간단하게 생각하면 다리의 길이만큼 배열을 만들고 다리위의 배열이 아무것도 없으면 트럭을 보내는 방법이다
 func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
-    var trucks = truck_weights
     var bridge = Array(repeating: 0, count: bridge_length)
+    var trucks = truck_weights
     var sec = 0
-    var w = 0
+    var bridgeWeight = 0
 
+    //다리의 빈공간만큼 배열을 만들고 와일이 실행될때마다 트럭의 배열을 삭제한다.
     while !bridge.isEmpty {
-        // 1초마다 다리위의 트럭 또는 빈공간은 움직임
-        w -= bridge.removeFirst()
+        // 다리는 1초만큼씩 이동한다.
         sec += 1
+        // 다리는 1초만큼씩 이동하니까 제일 앞의 배열을 삭제한다.(무게)
+        bridgeWeight -= bridge.removeFirst()
 
-        // 다리에 진입 예정인 트럭을 포함한 무게와 다리가 견딜 수 있는 무게를 비교해서
-        // 견딜 수 있으면 트럭 진입 시킨다.
+        // 이제 다리에 진입할 트럭을 무게와 비교해서 안넘으면 추가해야하는데 올라갈 트럭이 있을때만 계산해야 하니까 옵셔널체이닝을 써준다.
         if let t = trucks.first {
-            if t + w <= weight {
-                w += trucks.removeFirst() // 트럭 진입
-                bridge.append(t) // 트럭 진입 완료
+            // 넘을경우 빈공간 (넘어갈 트럭이 대기중입니다)
+            if t + bridgeWeight <= weight {
+                bridgeWeight += trucks.removeFirst()
+                bridge.append(t)
             } else {
-                // 견딜 수 없으면 트럭 대기하고 빈공간만 보낸다.
+                // 안넘을경우 트럭을 보내줍니다. 무게를 추가.
                 bridge.append(0)
             }
         }
     }
     return sec
 }
-//func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
-//
-//    var bridge = Array(repeating: 0, count: bridge_length)
-//    var trucks = truck_weights
-//    var sec = 0
-//    var bridgeWeight = 0
-//
-//    //다리의 빈공간만큼 배열을 만들고 와일이 실행될때마다 트럭의 배열을 삭제한다.
-//    while !bridge.isEmpty {
-//        // 다리는 1초만큼씩 이동한다.
-//        sec += 1
-//        // 다리는 1초만큼씩 이동하니까 제일 앞의 배열을 삭제한다.(무게)
-//        bridgeWeight -= bridge.removeFirst()
-//
-//        // 이제 다리에 진입할 트럭을 무게와 비교해서 안넘으면 추가해야하는데 올라갈 트럭이 있을때만 계산해야 하니까 옵셔널체이닝을 써준다.
-//        if let t = trucks.first {
-//            // 넘을경우 빈공간 (넘어갈 트럭이 대기중입니다)
-//            if t + bridgeWeight <= weight {
-//                bridge.append(0)
-//            } else {
-//                // 안넘을경우 트럭을 보내줍니다. 무게를 추가.
-//                bridgeWeight += trucks.removeFirst()
-//                bridge.append(t)
-//            }
-//        }
-//    }
-//    return sec
-//}
 solution(5, 5, [2,2,2,2,1,1,1,1,1])
 
 
